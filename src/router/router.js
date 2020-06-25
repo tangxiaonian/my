@@ -10,7 +10,7 @@ const router = new VueRouter({
         {
             path:"/",
             redirect: () => {
-                return "/index";
+                return "/login";
             }
         },
         {
