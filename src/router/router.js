@@ -33,12 +33,15 @@ const router = new VueRouter({
 });
 // 前置守卫
 router.beforeEach((to, from, next) => {
-
-    if (!store.state.users.token) {
-        console.log("token 不存在，跳转到登录!");
-        next({path: "/login"})
-    }else {
+    if (to.path === "/login") {
         next();
+    }else {
+        if (!store.state.users.token) {
+            console.log("token 不存在，跳转到登录!");
+            next({path: "/login"});
+        }else {
+            next();
+        }
     }
 
 });
